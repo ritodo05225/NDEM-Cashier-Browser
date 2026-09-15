@@ -1,0 +1,63 @@
+body 
+{
+    background-color: darkgreen;
+}
+
+#quantity, #itemRecieved, #itemPrice
+{
+    text-align: center;
+}
+
+#buttonSell 
+{
+    background-color: lightseagreen;
+
+    width: 10vw;
+    height: 5vh;
+}
+
+.itemListFrame
+{
+    position: fixed;
+    background-color: white;
+
+    border-radius: 1rem;
+    border: .25rem solid;
+
+    width: 60vw;
+    height: 80vh;
+
+    top: 10vh;
+    left: 5vw;
+
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+
+    height: 80vh;
+    overflow-y: auto;
+}
+
+.calculateFrame
+{
+    position: fixed;
+    background-color: white;
+
+    border-radius: 1rem;
+    border: .25rem solid;
+
+    height: 80vh;
+    width: 25vw;
+    top: 10vh;
+    left: 70vw;
+
+
+    text-align: center;
+}
+
+#itemName 
+{
+    font-size: xx-large;
+    font:   bold;
+    
+}
