@@ -4,26 +4,34 @@ const paymentReceived = document.getElementById("paymentReceived")
 const quantityR = document.getElementById("quantity")
 const changeZ = document.getElementById("changeZ")
 const sellButton = document.getElementById("buttonSell")
-
+const totalPrice = document.getElementById("totalPrice")
 
 const itemListFrame = document.getElementById("itemListFrame")
 
-const APIURL = "https://script.google.com/macros/s/AKfycbylloK40pJxijL9SCKLsuQL7oren-M61MGQcnc6Ds_AfY51JPOKX1FboHecZb06W10/exec"
+const oldStock = "";
+
+const APIURL = "https://script.google.com/macros/s/AKfycbx3GznGMPVdb1WxooaqQfAAIpbg1Y3fQitHqKeD8wyP38svmYUxOPTRTPtwpPsOxeBl/exec"
 let inpN = "";
 let inpQ = "";
 let inpR = "";
+
+let tP = "";
 
 let prisez = 0;
 
 function calculateChange()
     {
-        const change = Number(paymentReceived.value)-Number(itemPrice.value);
+        tP = Number(itemPrice.value) * Number(quantityR.value);
 
+        totalPrice.textContent = `TOTAL PRICE: ${tP}`;
+
+        const change = Number(paymentReceived.value)-Number(tP);
         changeZ.textContent = `CHANGE: ${change}`;
     } 
 
 itemPrice.addEventListener("input", calculateChange);
 paymentReceived.addEventListener("input", calculateChange);
+quantityR.addEventListener("input", calculateChange)
 
 
 async function loadItems() 
@@ -53,13 +61,13 @@ async function loadItems()
                 itemNameDisplay.textContent = itemName;
                 itemPrice.value = price;
                 inpN = itemName;
+
+                calculateChange();
             })
         }
 
     console.log(data);
 }
-
-loadItems();
 
 async function sellItem(item, quantity, revenue) 
 {
@@ -94,17 +102,22 @@ async function sellItem(item, quantity, revenue)
     }
 }
 
+
+loadItems();
+
+
+
 sellButton.addEventListener("click", function() 
 {
 
-    prisez = itemPrice.value;
+    prisez = Number(itemPrice.value);
 
     inpQ = Number(quantityR.value);
-    inpR = Number(paymentReceived.value) * inpQ;
+    inpR = Number(paymentReceived.value);
 
-    if (inpQ * prisez > inpR) return;
+    if (tP > inpR) return;
 
-    sellItem(inpN, inpQ, inpR)
+    sellItem(inpN, inpQ, tP);
 
-    loadItems();
+    setTimeout(() => {loadItems();}, 1000);
 });
