@@ -10,7 +10,7 @@ const itemListFrame = document.getElementById("itemListFrame")
 
 const oldStock = "";
 
-const APIURL = "https://script.google.com/macros/s/AKfycbx3GznGMPVdb1WxooaqQfAAIpbg1Y3fQitHqKeD8wyP38svmYUxOPTRTPtwpPsOxeBl/exec"
+const APIURL = "https://script.google.com/macros/s/AKfycbxNSnjevBBgoqEGcs-jRJGTVWScXR_ZmlSoKegH_q6xTjFBeOP3iJ6ETeLf-gs6ECozPg/exec"
 let inpN = "";
 let inpQ = "";
 let inpR = "";
