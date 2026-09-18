@@ -118,6 +118,6 @@ sellButton.addEventListener("click", function()
     if (tP > inpR) return;
 
     sellItem(inpN, inpQ, tP);
-
-    setTimeout(() => {loadItems();}, 1000);
 });
+
+setInterval(loadItems(),1000);
